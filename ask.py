@@ -6,7 +6,7 @@ def rand():
     sheet = rb.sheet_by_index(0)
     rownum = randint(0, sheet.nrows)
     return sheet.cell_value(rownum, 0)+' ----- '+sheet.cell_value(rownum, 1) + '\n' +sheet.cell_value(rownum, 2)+ ' ----- ' + sheet.cell_value(rownum, 3)
-token = "1234567"
+token = "  "
 bot = telebot.TeleBot(token)
 
 def randtwo(ls, sr):
@@ -27,12 +27,12 @@ def start(message):
     bot.send_message(message.chat.id, rand())
 
 
-@bot.message_handler(commands=['frenchenglish'])
+@bot.message_handler(commands=['frenchenglish'])  #  french - english
 def englishfrench(message):
     bot.send_message(message.chat.id, randtwo('French','English'))
 
 
-@bot.message_handler(commands=['englishfrench'])
+@bot.message_handler(commands=['englishfrench']) # english -frensh
 def frenchenglish(message):
     bot.send_message(message.chat.id, randtwo('English','French'))
 bot.polling()
